@@ -1,6 +1,6 @@
-import instance from '../api/apiConfig'
+import instance from '../api/apiConfig';
 import { useEffect, useState } from 'react';
-import TeamCards from '../components/TeamCard'
+import TeamCards from '../components/TeamCard';
 
 const DashboardPage = () => {
     const [teams, setTeams] = useState ([])
@@ -9,16 +9,15 @@ const DashboardPage = () => {
             let{data} = await instance.get('/teams')
             let clubs = data.data;
             setTeams(clubs)
-        }
+            }
         catch(e){
             console.log(e)
-        }
+            }
     }
 
-useEffect{() =>{
-    getTeams()
-})
-
+useEffect(() => {
+    getTeams();
+});
 
     return (
         <div id = 'home-page'>
@@ -46,16 +45,13 @@ useEffect{() =>{
         {/** Team Cards */}
         <div className='row'>
             <div className='row'>
-                {
-                    teams.map((team,index)) => {
-                        return{
-                            <div className='five-columns' key={index}>
-                                <TeamCards team={team}/>
-                            </div>
-                        }
-                    }
-                }
-
+                {teams.map((team,index) => {
+                    return (
+                        <div className='five-columns' key={index}>
+                            <TeamCards team={team}/>
+                        </div>
+                        )
+                })}
             </div>
         </div>
         </div>
